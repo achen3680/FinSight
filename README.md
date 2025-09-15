@@ -1,56 +1,71 @@
-# FinSight
+# Transaction Classifier with PyTorch + MLflow  
 
-**AI-powered personal finance dashboard**  
-Auto-categorize your expenses, forecast future spend, and ask natural language questions about your finances - all in one place.
+An end-to-end ML project to practice **PyTorch modeling** and **MLflow experiment tracking**, focusing on expense classification in a finance context.  
 
 ---
-## Documents
-https://drive.google.com/drive/u/0/folders/1XozTzA_3ww2MmuK8wT9XsTXYyoG50BWw
 
 ## ✨ Features
+- 🔍 **Expense Classification**  
+  Train a PyTorch model to automatically categorize financial transactions (e.g., Dining, Travel, Groceries).  
 
-- 🔍 **Smart Expense Categorization**  
-  Automatically categorize transactions using ML models or embeddings
+- 📊 **Experiment Tracking with MLflow**  
+  Log hyperparameters, metrics, and model artifacts across runs. Compare experiments and register best models.  
 
-- 📈 **Cash Flow Forecasting**  
-  Predict upcoming income and expenses with time-series modeling
+- 🛡️ **Governance Checks**  
+  Add basic audit logging, per-category accuracy reporting, and drift detection for incoming transactions.  
 
-- 🧠 **LLM-Powered Finance Chat**  
-  Ask questions like “How much did I spend on dining last month?” using natural language
-
-- 📊 **Personalized Spending Insights**
-  Surface trends like “Your rideshare spend is up 22% this week”
-
-- 🔁 **Recurring Subscription Detection**  - Nice to Have
-  Identify and manage monthly charges — detect unused or new subscriptions
+- ⚡ **Deployment Ready**  
+  Containerized with Docker + FastAPI endpoint, CI/CD integration (GitHub Actions).  
 
 ---
 
 ## 🧱 Tech Stack
-
-- **Backend:** Python, FastAPI
-- **Frontend:** Streamlit or React (WIP)
-- **ML:** scikit-learn, OpenAI Embeddings, Prophet (or ARIMA)
-- **Integrations:** Plaid or Stripe (mocked initially), OpenAI API
-- **Deployment:** GCP / Streamlit Cloud / Vercel (based on stack)
+- **ML:** PyTorch, MLflow  
+- **Backend:** Python, FastAPI  
+- **Infra/DevOps:** Docker, GitHub Actions CI/CD, Azure App Service (optional)  
+- **Data:** Public transaction/expenses dataset (mocked initially)  
 
 ---
 
-## 🧪 Setup Instructions
-
+## 🚀 Setup Instructions
 ```bash
-# Clone the repo
+# clone the repo
 git clone https://github.com/achen3680/finsight.git
 cd finsight
 
-# Create virtual environment
+# create virtual environment
 python -m venv venv
-source venv/bin/activate  # on Mac/Linux
-venv\Scripts\activate     # on Windows
+source venv/bin/activate  # mac/linux
+venv\Scripts\activate     # windows
 
-# Install dependencies
+# install dependencies
 pip install -r requirements.txt
 
-# Run the app
-streamlit run app.py  # or uvicorn main:app --reload (if using FastAPI)
+# run training script (logs to MLflow)
+python train.py
+
+# run FastAPI app for inference
+uvicorn main:app --reload
 ```
+## 📈 Roadmap
+
+- Baseline PyTorch classifier (MLP)  
+- MLflow experiment tracking + registry  
+- Governance metrics (bias checks, drift monitoring)  
+- Dockerize and deploy to Azure App Service  
+- Optional: Streamlit dashboard for interactive demo  
+
+ 
+
+├── data/              # sample transactions dataset
+├── notebooks/         # exploration + baseline models
+├── src/               # training + inference code
+├── requirements.txt   # dependencies
+├── train.py           # main training script
+├── main.py            # FastAPI inference server
+└── README.md
+
+
+
+
+
